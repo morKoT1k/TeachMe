@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Úkoly{% endblock %}
+{% block content %}
+<div class="students_assignments_container">
+    <div class="assignments-container">
+        <h1>Úkoly</h1>
+
+        <div class="assignment-section">
+            <h2>Neodevzdané</h2>
+            <ul class="assignment-list">
+                {% for assignment in not_submitted %}
+                    {% if not assignment in overdue %}
+                        <div class="assignment">
+                            <div class="assignment-header">
+                                <a href="{{ url_for('main.submit_assignment', assignment_id=assignment.id) }}" class="assignment-link"><p>{{ assignment.title }}</p></a>
+                                <a href="{{ url_for('main.submit_assignment', assignment_id=assignment.id) }}" class="assignment-link"><p class="due-date">Termín odevzdání: {{ assignment.due_date }}</p></a>
+                                <a href="{{ url_for('main.submit_assignment', assignment_id=assignment.id) }}" class="assignment-link"><p class="due-date">Čas odevzdání: {{ assignment.due_time }}</p></a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="assignment-section">
+            <h2>Odevzdané</h2>
+            <ul class="assignment-list">
+                {% for assignment, points in submitted %}
+                    <div class="assignment">
+                        <div class="assignment-header">
+                            <a href="{{ url_for('main.configure_submission', assignment_id=assignment.id, student_id=student_id) }}" class="assignment-link"><p>{{ assignment.title }}</p></a>
+                            <a href="{{ url_for('main.configure_submission', assignment_id=assignment.id, student_id=student_id) }}" class="assignment-link"><p class="due-date">Termín odevzdání: {{ assignment.due_date }}</p></a>
+                            <a href="{{ url_for('main.configure_submission', assignment_id=assignment.id, student_id=student_id) }}" class="assignment-link"><p class="due-time">Čas odevzdání: {{ assignment.due_time }}</p></a>
+                            <p>Bodů: {{ points if points is not none else "-" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="assignment-section">
+            <h2>Zpožděné</h2>
+            <ul class="assignment-list">
+                {% for assignment in overdue %}
+                    <div class="assignment">
+                        <div class="assignment-header">
+                            <a href="{{ url_for('main.submit_assignment', assignment_id=assignment.id) }}" class="assignment-link inactive" {% if assignment.is_overdue %}class="overdue"{% endif %}><p>{{ assignment.title }}</p></a>
+                            <a href="{{ url_for('main.submit_assignment', assignment_id=assignment.id) }}" class="assignment-link inactive"><p class="due-date">Termín odevzdání: {{ assignment.due_date }}</p></a>
+                            <a href="{{ url_for('main.submit_assignment', assignment_id=assignment.id) }}" class="assignment-link inactive"><p class="due-date">Čas odevzdání: {{ assignment.due_time }}</p></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

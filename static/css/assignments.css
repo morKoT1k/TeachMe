@@ -1,0 +1,61 @@
+/* Style for assignments page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.inactive {
+    color: #ff6b6b; /* Red color */
+    pointer-events: none; /* Make the link unclickable */
+    cursor: default; /* Change cursor to default */
+}
+
+.overdue {
+    color: red;
+    font-weight: bold;
+}
+
+.students_assignments_container{
+    width: 90%;
+    margin: auto;
+}
+.students_assignments_container h1{
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.student_submission_container{
+    width: 90%;
+    margin: auto;
+}
+
+.student_submission_container h1{
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo/teachme-favicon-color.png') }}">
+
+    <!-- Odkaz na vlastní CSS soubor -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/groups.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/new_group.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/group.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/new_assignment.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/assignment_details.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/assignments.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-v5mu95MUHA4SOBEHZUNgex6COFxt4IVr9KrpaUJ/J/sWrvo2tv4ipL49paEZjKWr" crossorigin="anonymous">
+
+</head>
+
+<body>
+<header>
+    <div class="nav_logo_container">
+        <a class="nav_logo" href="{{url_for('auth.index')}}">
+            <img src="{{url_for('static', filename='images/logo/teachme-high-resolution-logo-white-transparent.svg')}}" alt="Logo">
+        </a>
+    </div>
+
+        <div class="auth">
+            {% if not current_user.is_authenticated %}
+            <a class="login_button" href="{{ url_for('auth.login') }}">Přihlásit se</a>
+                <a class="login_button" href="{{ url_for('auth.signup') }}">Registrovat</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <a class="login_button" href="{{ url_for('auth.logout') }}">Odhlásit se</a>
+            {% endif %}
+
+        <select onchange="window.location.href=this.value;">
+            <option value="" selected="selected">Menu &#9776;</option>
+            {% if current_user.is_authenticated and current_user.registered %}
+            {% if not current_user.is_teacher %}
+                <option value="{{ url_for('main.assignments') }}">Úkoly</option>
+            {% endif %}
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+                <option value="{{ url_for('auth.login') }}">Přihlásit se</option>
+                <option value="{{ url_for('auth.signup') }}">Registrovat</option>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <option value="{{ url_for('auth.logout') }}">Odhlásit se</option>
+            {% endif %}
+        </select>
+    </div>
+</header>
+<div class="flashDiv">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flashMessage {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Obsah zde -->
+    </footer>
+</body>
+
+</html>

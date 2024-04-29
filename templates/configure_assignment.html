@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Konfigurace úkolu{% endblock %}
+
+{% block content %}
+<div class="button-group">
+    <a href="{{ url_for('main.assignment_details', assignment_id=assignment.id) }}" class=" btn btn-primary">Zpět na detaily skupiny</a>
+</div>
+<h1 class="create-group-title"><h1 class="create-group-title">Konfigurace úkolu</h1>
+
+<div class="new_assignment_container">
+  <form id="create-assignment-form" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <label for="title">Název:</label>
+      {{ form.title(class="form-control", id="title", required="required") }}
+    </div>
+    <div class="form-group">
+      <label for="description">Popis:</label>
+      {{ form.description(class="form-control", id="description", required="required") }}
+    </div>
+    <div class="form-group-date_time">
+      <label for="due_date">Datum splnění:</label>
+      {{ form.due_date(class="form-control", id="due_date", required="required") }}
+    </div>
+    <div class="form-group-date_time">
+      <label for="due_time">Čas splnění:</label>
+      {{ form.due_time(class="form-control", id="due_time", required="required") }}
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Odeslat</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

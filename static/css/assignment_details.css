@@ -1,0 +1,60 @@
+/* assignment_detail.css */
+
+
+.ass_details_container{
+ width: 90%;
+ margin: auto;}
+
+.submission-status {
+    font-size: 20px; /* Adjust as needed */
+    color: green; /* Green checkmark for submitted */
+}
+
+.submission-status-failed {
+    font-size: 20px;
+    color: red; /* Red checkmark for not submitted */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adjust as needed */
+}
+.thead-bold th {
+    font-weight: bold;
+    font-size: 1.1em; /* Adjust as needed */
+     background-color: #F8F8F8;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid black; /* Only bottom border */
+}
+
+th {
+    background-color: #f2f2f2; /* Light gray background for table header */
+}
+
+td:last-child, th:last-child {
+    border-right: none; /* Remove right border for last column */
+}
+
+/* Hover effect for table rows */
+.table-row:hover {
+    background-color: #f5f5f5; /* Light gray background on hover */
+    cursor: pointer;
+}
+
+.point_assignment{
+width: 10%}
+
+.submission_details_container{
+width: 90%;
+margin: auto;}
+
+.submission_details_container h1{
+    text-align: center;
+    margin-top: 20px;
+    }
+

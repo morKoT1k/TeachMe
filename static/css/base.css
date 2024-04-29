@@ -1,0 +1,124 @@
+/* styles.css */
+
+body {
+    font-family: 'Lato', sans-serif; /* Set font-family to Lato */
+    background-color: #F8F8F8; /* Even less bright background */
+    color: #27292A;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #27292A;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #FFFFFF; /* Add border to the bottom of the header */
+}
+
+.nav_logo img {
+    max-width: 15%;
+    height: auto;
+}
+
+
+
+
+
+.auth {
+    width: 25%;
+    display: flex;
+    align-items: right;
+}
+
+.auth a {
+    color: #FDC500; /* Button color */
+    text-decoration: none;
+    margin-right: 10px;
+    width: 100%;
+    text-align: right;/* Add red border to the buttons */
+}
+
+select {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    ul {
+        display: none;
+    }
+
+    select {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #27292A;
+        color: #FFFFFF;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.flashDiv {
+    position: fixed;
+    top: 12%; /* Position at the vertical center */
+    left: 50%; /* Position at the horizontal center */
+    transform: translate(-50%, -50%); /* Center the div */
+    z-index: 1000;
+}
+
+.flashMessage {
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.flashDiv .success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.flashDiv .info {
+    background-color: #2196F3;
+    color: white;
+}
+
+.flashDiv .warning {
+    background-color: #FF9800;
+    color: white;
+}
+
+.flashDiv .error {
+    background-color: #f44336;
+    color: white;
+}
+
+
+/* Example CSS for Font Awesome icons */
+.fa-file-pdf {
+  color: red; /* Customize the color */
+}
+
+.fa-file-word {
+  color: blue; /* Customize the color */
+}
+
+.fa-file-excel {
+  color: green; /* Customize the color */
+}
+
+.fa-file-powerpoint {
+  color: orange; /* Customize the color */
+}
+
+.fa-file {
+  color: gray; /* Customize the color */
+}
+.btn.btn-primary.deleteBtn {
+    background-color: #27292A;
+    color: #FFFFFF;
+}
+
+

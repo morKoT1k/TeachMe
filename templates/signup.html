@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}teachMe | Registrace{% endblock %}
+
+{% block content %}
+
+<div class="login_container">
+    <form class="form-signin" method="POST" action="/signup">
+        <h1>Registrace</h1>
+        {{ form.hidden_tag() }}
+        <label for="email">Email:</label>
+        {{ form.email }}
+        <label for="surname">Příjmení:</label>
+        {{ form.surname }}
+        <label for="name">Jméno:</label>
+        {{ form.name }}
+        <label for="password">Heslo:</label>
+        {{ form.password }}
+        <div class="form-group form-check">
+            {{ form.is_teacher(class="form-check-input", id="is_teacher") }}
+            <label class="form-check-label" for="is_teacher">Jste učitel?</label>
+        </div>
+        <button type="submit">Registrovat</button>
+        <a href="{{ url_for('auth.index') }}" class="Cancel_btn">Zrušit</a>
+    </form>
+</div>
+
+{% endblock %}

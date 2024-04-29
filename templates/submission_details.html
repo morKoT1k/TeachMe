@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Odeslat známku - {{ submission.id }}{% endblock %}
+
+{% block content %}
+  <div class="button-group">
+    <a href="{{ url_for('main.assignment_details', assignment_id=assignment_id) }}" class=" btn btn-primary">Zpět k detailům úkolu</a>
+</div>
+<div class ="submission_details_container">
+
+    <h1>Odeslat známku </h1>
+  <p>Student: {{ submission.student.name }}</p>
+  <p>Odesláno: {{ submission.submitted_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+  <p>Odkaz na dokument:
+    {% if submission.document_link %}
+      <a href="{{ url_for('main.download_submission', submission_id=submission.id) }}">Stáhnout</a>
+    {% else %}
+      Žádný dokument
+    {% endif %}
+  </p>
+  <p>Poznámky: {{ submission.notes }}</p>
+
+  <h2>Aktualizovat body</h2>
+  <form method="POST">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+    <div class = "point_assignment">
+      {{ form.points.label }}: {{ form.points(class="form-control") }}
+      {% for error in form.points.errors %}
+        <span style="color: red;">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div>
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</div>
+{% endblock %}

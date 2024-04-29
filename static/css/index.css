@@ -1,0 +1,61 @@
+
+
+.page-title {
+    text-align: center; /* Center the heading */
+    margin-top: 50px; /* Add some top margin for spacing */
+}
+
+.login-window {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-window h2 {
+    margin-bottom: 20px;
+    color: #27292A;
+}
+
+.login-window form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-window label {
+    margin-bottom: 10px;
+    color: #27292A;
+}
+
+.login-window input[type="text"],
+.login-window input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+}
+
+.login-window input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #27292A;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-window input[type="submit"]:hover {
+    background-color: #1e2021;
+}
+
+.login-window p {
+    margin-top: 10px;
+    color: #27292A;
+}
+
+.login-window a {
+    color: #FDC500;
+    text-decoration: none;
+}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Skupiny{% endblock %}
+
+{% block content %}
+<h1>Skupiny</h1>
+
+<div class="teams_container">
+    {% for group in groups %}
+    <div class="team_card">
+        <a href="{{ url_for('main.group', group_id=group.id) }}">
+            <h2>{{ group.name }}</h2>
+        </a>
+    </div>
+    {% endfor %}
+
+    <!-- Karta pro přidání skupiny -->
+    <div class="team_card add_group_card">
+        <a href="{{ url_for('main.create_group') }}">
+            <h2>Přidat Skupinu</h2>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

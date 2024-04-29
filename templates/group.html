@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Skupina - {{ group.name }}{% endblock %}
+
+{% block content %}
+<div class="button-group">
+    <a href="{{ url_for('main.groups') }}" class="btn btn-primary">Zpět na Všechny Skupiny</a>
+    <a href="{{ url_for('main.delete_group', group_id=group.id) }}" class="btn btn-primary deleteBtn">Smazat Skupinu</a>
+
+</div>
+
+<h1 class="group-title">{{ group.name }}</h1>
+
+<h2 class="section-title">Studenti</h2>
+<div class="student-list-container">
+    <div class="row">
+        {% for student in students %}
+            <div class="col-md-3">
+                <ul>
+                    <li>{{ student.surname }} {{ student.name }} ({{ student.username }})</li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<h2 class="section-title">Zadání</h2>
+
+{% for assignment in assignments %}
+<div class="assignment">
+    <div class="assignment-header">
+        <a href="{{ url_for('main.assignment_details', assignment_id=assignment.id) }}" class="assignment-link"><p>{{ assignment.title }}</p></a>
+        <a href="{{ url_for('main.assignment_details', assignment_id=assignment.id) }}" class="assignment-link"><p class="due-date">Termín odevzdání: {{ assignment.due_date }}</p></a>
+        <a href="{{ url_for('main.assignment_details', assignment_id=assignment.id) }}" class="assignment-link"><p class="due-date">Čas odevzdání: {{ assignment.due_time }}</p></a>
+    </div>
+</div>
+<div class="divider"></div>
+{% endfor %}
+
+
+<div class ="group_buttons">
+    <div>
+        <a href="{{ url_for('main.configure_group', group_id=group.id) }}" class="group-action">Konfigurovat Skupinu</a>
+    </div>
+    <div>
+        <a href="{{ url_for('main.create_assignment', group_id=group.id) }}"class="group-action">Vytvořit Zadání</a>
+    </div>
+</div>
+
+{% endblock %}

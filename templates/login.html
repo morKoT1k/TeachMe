@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}teachMe | Přihlášení{% endblock %}
+
+{% block content %}
+
+<div class="login_container">
+    <form class="form-signin" method="POST" action="/login">
+        <h1>Přihlášení</h1>
+        {{ form.hidden_tag() }}
+        <label for="username">Uživatelské jméno nebo email:</label>
+        {{ form.username }}
+        <label for="password">Heslo:</label>
+        {{ form.password }}
+        <button type="submit">Přihlásit se</button>
+        <a href="{{ url_for('auth.index') }}" class="Cancel_btn">Zrušit</a>
+
+    </form>
+</div>
+{% endblock %}

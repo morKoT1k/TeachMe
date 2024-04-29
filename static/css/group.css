@@ -1,0 +1,73 @@
+.group-title {
+    text-align: center;
+    margin-top: 20px;
+}
+.button-group {
+    padding-left: 5%;
+    padding-top: 10px;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    padding-left:5%;
+}
+
+.student-list-container {
+    margin-top: 20px;
+    padding-left:5%;
+}
+
+.student-list-container .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.student-list-container .col-md-3 {
+    width: 10%;
+    padding: 5px;
+}
+
+.assignment {
+    padding-left:5%;
+}
+.assignment-link{
+    width: 30%;
+}
+
+.divider {
+    border-bottom: 1px solid #ccc; /* Thin line dividing each assignment */
+    margin-left: 5%;
+    width: 90%;
+}
+
+.assignment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+
+
+.assignment-link {
+    color: #27292A;
+    text-decoration: none;
+}
+
+.group-action {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FDC500;
+    color: #27292A;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.group_buttons{
+padding-left: 5%;}
+
+.group-action:hover {
+    background-color: #F0BB35;
+}

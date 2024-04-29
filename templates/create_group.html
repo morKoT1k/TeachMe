@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Vytvořit Skupinu{% endblock %}
+
+{% block content %}
+
+<div class="button-group">
+    <a href="{{ url_for('main.groups') }}" class="btn btn-primary">Zpět na Všechny Skupiny</a>
+</div>
+
+<h1 class="create-group-title">Vytvořit Skupinu</h1>
+<div class="flash-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="{{ category }}">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+<div class="create-group-container">
+  <form id="create-group-form" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group-name">
+      <label for="name" class="create-group-label">Název:</label>
+      {{ form.name(class_="create-group-input", id="name") }}
+    </div>
+<label class="create-group-label">Studenti:</label><br>
+    <div class="form-group student-list-container scrollable-container">
+
+      <div class="flex-container">
+        {% for student in students %}
+          <div class="student-item">
+            <input type="checkbox" id="student_{{ student.id }}" name="students" value="{{ student.id }}">
+            <label for="student_{{ student.id }}" class="create-group-student-label">{{ student.surname }} {{ student.name }} ({{ student.username }})</label><br>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="create-group-submit">Vytvořit Skupinu</button>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}

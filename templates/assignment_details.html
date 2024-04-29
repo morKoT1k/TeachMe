@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Úkol - {{ assignment.title }}{% endblock %}
+
+{% block content %}
+
+<div class="button-group">
+    <a href="{{ url_for('main.group', group_id=group_id) }}" class="btn btn-primary">Zpět na podrobnosti skupiny</a>
+    <a href="{{ url_for('main.configure_assignment', assignment_id=assignment.id) }}" class="btn btn-primary">Nastavit úkol</a>
+    <a href="{{ url_for('main.delete_assignment', assignment_id=assignment.id) }}" class="btn btn-primary deleteBtn">Smazat úkol</a>
+</div>
+<div class ="ass_details_container">
+  <h1>Úkol: {{ assignment.title }}</h1>
+  <p>Popis: {{ assignment.description }}</p>
+  <p>Termín odevzdání: {{ assignment.due_date.strftime('%Y-%m-%d') }} {{ assignment.due_time.strftime('%H:%M') }}</p>
+  <p>Čas odevzdání: {{ assignment.due_time.strftime('%H:%M') }}</p>
+
+  <h2>Odevzdané práce</h2>
+  <table>
+    <thead class="thead-bold">
+      <tr>
+        <th>Student</th>
+        <th>Stav odevzdání</th>
+        <th>Odevzdáno v</th>
+        <th>Poznámky</th>
+        <th>Odkaz na dokument</th>
+        <th>Bodů</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student_id, submission in student_submissions.items() %}
+      {% if submission.submitted_at %}
+        <tr class="table-row" onclick="window.location.href='{{ url_for('main.submission_details', submission_id=submission.id) }}';">
+          {% endif %}
+          <td>{{ submission.name }}</td>
+          <td>
+            {% if submission.submitted_at %}
+              <span class="submission-status">&#x2713;</span> <!-- Zelený odškrtnutý symbol pro odevzdané práce -->
+            {% else %}
+              <span class="submission-status-failed">&#x2717;</span> <!-- Červený odškrtnutý symbol pro neoodevzdané práce -->
+            {% endif %}
+          </td>
+          <td>{{ submission.submitted_at or "-" }}</td>
+          <td>{{ submission.notes or "-" }}</td>
+          <td>
+            {% if submission.document_link %}
+              <a href="{{ url_for('main.download_submission', submission_id=submission.id) }}">Stáhnout</a>
+            {% else %}
+              -
+            {% endif %}
+          </td>
+           <td>{{ submission.points or "-" }}</td>
+          <td>
+            {% if submission.submitted_at %}
+              <a href="{{ url_for('main.submission_details', submission_id=submission.id) }}">Podrobnosti</a>
+            {% else %}
+              -
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

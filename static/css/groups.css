@@ -1,0 +1,42 @@
+/* groups.css */
+
+.teams_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team_card {
+    width: 300px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.team_card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.team_card a {
+    display: block;
+    padding: 20px;
+    color: #27292A;
+    text-decoration: none;
+}
+
+.team_card h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.add_group_card {
+    background-color: #FDC500; /* Yellow background for add group card */
+    color: #FFFFFF; /* White text color for add group card */
+    cursor: pointer;
+}
+
+.add_group_card:hover {
+    background-color: #FFD700; /* Darker yellow background on hover */
+}

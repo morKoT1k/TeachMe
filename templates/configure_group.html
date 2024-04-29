@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Konfigurace Skupiny{% endblock %}
+
+{% block content %}
+<div class="button-group">
+    <a href="{{ url_for('main.group', group_id=group.id) }}" class=" btn btn-primary">Zpět na Detaily Skupiny</a>
+</div>
+
+<h1 class="create-group-title">Konfigurace Skupiny</h1>
+
+<div class="create-group-container">
+  <form id="create-group-form" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group-name">
+      <label for="name" class="create-group-label">Jméno:</label>
+      {{ form.name(class_="create-group-input", id="name") }}
+    </div>
+<label class="create-group-label">Studenti:</label><br>
+    <div class="form-group student-list-container scrollable-container">
+
+      <div class="flex-container">
+        {% for student in students %}
+          <div class="student-item">
+            <input type="checkbox" id="student_{{ student.id }}" name="students" value="{{ student.id }}"
+                 {% if student in group.students %} checked {% endif %}>
+            <label for="student_{{ student.id }}" class="create-group-student-label">{{ student.surname }} {{ student.name }} ({{ student.username }})
+            </label><br>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="create-group-submit">Odeslat</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+

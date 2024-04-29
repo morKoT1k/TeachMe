@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}teachMe{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">Vítejte v teachMe! Systému pro odevzdávání domácích úkolů</h1>
+
+<div class="login-window">
+    <form class="form-signin" method="POST" action="/login">
+        <h2>Přihlášení</h2>
+        {{ form.hidden_tag() }}
+        <label for="username">Uživatelské jméno nebo email:</label><br>
+        {{ form.username }}<br>
+        <label for="password">Heslo:</label><br>
+        {{ form.password }}<br><br>
+        <input type="submit" value="Přihlásit se">
+    </form>
+    <p>Nemáte účet? <a href="{{ url_for('auth.signup') }}">Zaregistrujte se zde</a>.</p>
+</div>
+{% endblock %}

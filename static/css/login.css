@@ -1,0 +1,76 @@
+/* styles.css */
+
+.login_container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 1px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login_container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #27292A;
+}
+
+.login_container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_container label {
+    margin-bottom: 10px;
+    color: #27292A;
+}
+
+.login_container input[type="text"],
+.login_container input[type="password"],
+.login_container input[type="email"],
+.login_container input[type="submit"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 1px;
+}
+
+.login_container button[type="submit"] {
+    padding: 10px 20px;
+    margin: 5px 0px;
+    background-color: #FDC500; /* Yellow color for submit button */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 1px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif; /* Set font-family to Lato */
+}
+
+.login_container a.Cancel_btn {
+    padding: 10px 20px;
+    margin: 5px 0px;
+    background-color: #27292A; /* Dark gray color for cancel button */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 1px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif; /* Set font-family to Lato */
+}
+
+.login_container a.Cancel_btn:hover {
+    background-color: #999999; /* Darker gray color on hover for cancel button */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
